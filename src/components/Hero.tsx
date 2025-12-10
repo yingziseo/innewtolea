@@ -32,6 +32,8 @@ export default function Hero() {
           {t('hero.desc')}
           <br />
           {t('hero.desc.2')}
+          <br />
+          {t('hero.desc.3')}
         </p>
       </div>
 
