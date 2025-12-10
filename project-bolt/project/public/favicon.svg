@@ -1,0 +1,22 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="23" stroke="url(#faviconGradient)" stroke-width="2" fill="none" />
+  <path
+    d="M24 10C24 10 16 18 16 24C16 30 24 38 24 38C24 38 32 30 32 24C32 18 24 10 24 10Z"
+    fill="url(#faviconGradient)"
+    opacity="0.2"
+  />
+  <path
+    d="M24 10C24 10 16 18 16 24C16 30 24 38 24 38C24 38 32 30 32 24C32 18 24 10 24 10Z"
+    stroke="url(#faviconGradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <line x1="24" y1="12" x2="24" y2="36" stroke="url(#faviconGradient)" stroke-width="1.5" opacity="0.6" />
+  <defs>
+    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C5A3CB" />
+      <stop offset="100%" stop-color="#8B5A94" />
+    </linearGradient>
+  </defs>
+</svg>
