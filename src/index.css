@@ -14,6 +14,15 @@
   body {
     @apply bg-cream-50 text-warm-700 font-sans;
     font-feature-settings: 'kern' 1, 'liga' 1;
+    cursor: none;
+  }
+
+  * {
+    cursor: none !important;
+  }
+
+  a, button, [role="button"], input, textarea, select {
+    cursor: none !important;
   }
 
   ::selection {

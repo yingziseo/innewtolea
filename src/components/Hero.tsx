@@ -4,7 +4,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-100/30 via-transparent to-transparent" />
 
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold-100/40 rounded-full blur-[100px] animate-float" />

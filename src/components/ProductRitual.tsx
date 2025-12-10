@@ -51,7 +51,7 @@ export default function ProductRitual() {
 
   return (
     <section
-      id="ritual"
+      id="products"
       ref={sectionRef}
       className="py-32 md:py-48 relative z-10"
     >
@@ -145,9 +145,7 @@ export default function ProductRitual() {
                     {t(item.descKey)}
                   </p>
                 </div>
-                {index < coreIngredients.length - 1 && (
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent mt-10" />
-                )}
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent mt-10" />
               </div>
             ))}
           </div>
@@ -181,6 +179,7 @@ export default function ProductRitual() {
                     {t(item.descKey)}
                   </p>
                 </div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent mt-8" />
               </div>
             ))}
           </div>
@@ -214,6 +213,7 @@ export default function ProductRitual() {
                     {t(item.descKey)}
                   </p>
                 </div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent mt-8" />
               </div>
             ))}
           </div>
@@ -246,6 +246,7 @@ export default function ProductRitual() {
                     {t(item.descKey)}
                   </p>
                 </div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent mt-8" />
               </div>
             ))}
           </div>
@@ -279,6 +280,7 @@ export default function ProductRitual() {
                     {t(item.descKey)}
                   </p>
                 </div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent mt-8" />
               </div>
             ))}
           </div>

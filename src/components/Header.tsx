@@ -7,6 +7,9 @@ const languages: { code: Language; label: string; short: string }[] = [
   { code: 'ko', label: '한국어', short: '한' },
 ];
 
+// 首页锚点列表
+const homeAnchors = ['hero', 'brand-culture', 'values', 'products'];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
@@ -28,6 +31,25 @@ export default function Header() {
     }
   }, [langMenuOpen]);
 
+  // 处理导航点击，在子页面时跳回首页
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
+    const currentHash = window.location.hash;
+    const isOnSubPage = currentHash === '#/about' || currentHash === '#/contact';
+
+    if (isOnSubPage) {
+      e.preventDefault();
+      // 先设置锚点 hash，触发 App 切换到首页，然后滚动到锚点
+      window.location.hash = anchor;
+      // 等待页面渲染完成后滚动到锚点
+      setTimeout(() => {
+        const element = document.getElementById(anchor);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  };
+
   const currentLang = languages.find((l) => l.code === language);
 
   return (
@@ -39,7 +61,11 @@ export default function Header() {
       }`}
     >
       <nav className="section-padding flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <a
+          href="#hero"
+          onClick={(e) => handleNavClick(e, 'hero')}
+          className="flex items-center gap-4 cursor-pointer"
+        >
           <div className="w-11 h-11 flex items-center justify-center">
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="24" r="23" stroke="url(#logoGradient)" strokeWidth="1.5" fill="none" />
@@ -72,26 +98,32 @@ export default function Header() {
               {t('brand.name')}
             </span>
           </div>
-        </div>
+        </a>
 
         <div className="hidden md:flex items-center gap-12">
+          {homeAnchors.map((anchor) => (
+            <a
+              key={anchor}
+              href={`#${anchor}`}
+              onClick={(e) => handleNavClick(e, anchor)}
+              className="text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300"
+            >
+              {t(anchor === 'hero' ? 'nav.home' :
+                 anchor === 'brand-culture' ? 'nav.brandCulture' :
+                 anchor === 'values' ? 'nav.values' : 'nav.products')}
+            </a>
+          ))}
           <a
-            href="#about"
+            href="#/about"
             className="text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300"
           >
             {t('nav.about')}
           </a>
           <a
-            href="#values"
+            href="#/contact"
             className="text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300"
           >
-            {t('nav.values')}
-          </a>
-          <a
-            href="#ritual"
-            className="text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300"
-          >
-            {t('nav.ritual')}
+            {t('nav.contact')}
           </a>
         </div>
 

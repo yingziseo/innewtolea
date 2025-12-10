@@ -25,7 +25,7 @@ export default function BrandIntro() {
 
   return (
     <section
-      id="about"
+      id="brand-culture"
       ref={sectionRef}
       className="py-32 md:py-48 section-padding relative z-10 bg-white"
     >
