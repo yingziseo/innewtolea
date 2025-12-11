@@ -35,40 +35,29 @@ export default function DynamicBackground() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // 主要光晕 - 更大更柔和
+    // Apple-style subtle blobs - very light and refined
     const blobs = [
       {
-        baseX: 0.25, baseY: 0.25, radius: 420,
-        color: { r: 197, g: 163, b: 203, a: 0.32 },
-        speed: 0.0006, amplitude: 0.18, phase: 0,
+        baseX: 0.2, baseY: 0.2, radius: 500,
+        color: { r: 139, g: 90, b: 155, a: 0.06 },
+        speed: 0.0004, amplitude: 0.12, phase: 0,
       },
       {
-        baseX: 0.75, baseY: 0.55, radius: 380,
-        color: { r: 224, g: 179, b: 194, a: 0.30 },
-        speed: 0.0008, amplitude: 0.15, phase: Math.PI / 2,
+        baseX: 0.8, baseY: 0.4, radius: 450,
+        color: { r: 184, g: 139, b: 197, a: 0.05 },
+        speed: 0.0005, amplitude: 0.10, phase: Math.PI / 2,
       },
       {
-        baseX: 0.5, baseY: 0.85, radius: 350,
-        color: { r: 212, g: 137, b: 154, a: 0.25 },
-        speed: 0.0005, amplitude: 0.20, phase: Math.PI,
-      },
-      {
-        baseX: 0.15, baseY: 0.7, radius: 300,
-        color: { r: 169, g: 125, b: 176, a: 0.22 },
-        speed: 0.001, amplitude: 0.12, phase: Math.PI * 1.5,
-      },
-      {
-        baseX: 0.85, baseY: 0.2, radius: 360,
-        color: { r: 194, g: 170, b: 133, a: 0.20 },
-        speed: 0.0007, amplitude: 0.16, phase: Math.PI * 0.5,
+        baseX: 0.5, baseY: 0.8, radius: 400,
+        color: { r: 206, g: 173, b: 216, a: 0.04 },
+        speed: 0.0003, amplitude: 0.15, phase: Math.PI,
       },
     ];
 
-    // 流动光带
+    // Subtle flowing lights
     const flowingLights = [
-      { startX: 0, startY: 0.3, speed: 0.0003, width: 200, opacity: 0.08 },
-      { startX: 1, startY: 0.6, speed: 0.00025, width: 180, opacity: 0.06 },
-      { startX: 0.5, startY: 0, speed: 0.00035, width: 160, opacity: 0.07 },
+      { startX: 0, startY: 0.3, speed: 0.0002, width: 250, opacity: 0.03 },
+      { startX: 1, startY: 0.6, speed: 0.00015, width: 220, opacity: 0.025 },
     ];
 
     // 微粒子
@@ -77,14 +66,14 @@ export default function DynamicBackground() {
       opacity: number; drift: number; phase: number;
     }> = [];
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 15; i++) {
       particles.push({
         x: Math.random(),
         y: Math.random(),
-        size: Math.random() * 3 + 1,
-        speed: Math.random() * 0.0002 + 0.0001,
-        opacity: Math.random() * 0.15 + 0.05,
-        drift: Math.random() * 0.1,
+        size: Math.random() * 2 + 0.5,
+        speed: Math.random() * 0.0001 + 0.00005,
+        opacity: Math.random() * 0.06 + 0.02,
+        drift: Math.random() * 0.05,
         phase: Math.random() * Math.PI * 2,
       });
     }
@@ -100,11 +89,11 @@ export default function DynamicBackground() {
       mouseX = lerp(mouseX, targetMouseX, 0.03);
       mouseY = lerp(mouseY, targetMouseY, 0.03);
 
-      // 清除并填充基础渐变
+      // Apple-style clean white base with subtle gradient
       const baseGradient = ctx.createLinearGradient(0, 0, width, height);
-      baseGradient.addColorStop(0, 'rgba(253, 251, 247, 1)');
-      baseGradient.addColorStop(0.5, 'rgba(250, 248, 244, 1)');
-      baseGradient.addColorStop(1, 'rgba(248, 245, 240, 1)');
+      baseGradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      baseGradient.addColorStop(0.5, 'rgba(251, 251, 253, 1)');
+      baseGradient.addColorStop(1, 'rgba(247, 247, 250, 1)');
       ctx.fillStyle = baseGradient;
       ctx.fillRect(0, 0, width, height);
 
@@ -115,9 +104,9 @@ export default function DynamicBackground() {
         const y = progress * height * 1.5 - height * 0.25;
 
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, light.width);
-        gradient.addColorStop(0, `rgba(200, 170, 190, ${light.opacity})`);
-        gradient.addColorStop(0.5, `rgba(200, 170, 190, ${light.opacity * 0.3})`);
-        gradient.addColorStop(1, 'rgba(200, 170, 190, 0)');
+        gradient.addColorStop(0, `rgba(139, 90, 155, ${light.opacity})`);
+        gradient.addColorStop(0.5, `rgba(139, 90, 155, ${light.opacity * 0.3})`);
+        gradient.addColorStop(1, 'rgba(139, 90, 155, 0)');
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -163,22 +152,22 @@ export default function DynamicBackground() {
 
         ctx.beginPath();
         ctx.arc(px, py, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200, 180, 190, ${p.opacity * twinkle})`;
+        ctx.fillStyle = `rgba(139, 90, 155, ${p.opacity * twinkle})`;
         ctx.fill();
       });
 
-      // 添加柔和的光晕叠加
+      // Subtle mouse-following highlight
       const overlayGradient = ctx.createRadialGradient(
-        width * (0.5 + (mouseX - 0.5) * 0.2),
-        height * (0.4 + (mouseY - 0.5) * 0.2),
+        width * (0.5 + (mouseX - 0.5) * 0.15),
+        height * (0.4 + (mouseY - 0.5) * 0.15),
         0,
         width * 0.5,
         height * 0.5,
-        Math.max(width, height) * 0.8
+        Math.max(width, height) * 0.7
       );
-      overlayGradient.addColorStop(0, 'rgba(255, 250, 245, 0.15)');
-      overlayGradient.addColorStop(0.5, 'rgba(255, 250, 245, 0.05)');
-      overlayGradient.addColorStop(1, 'rgba(255, 250, 245, 0)');
+      overlayGradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+      overlayGradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.1)');
+      overlayGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
       ctx.fillStyle = overlayGradient;
       ctx.fillRect(0, 0, width, height);
 
@@ -198,7 +187,7 @@ export default function DynamicBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.85 }}
+      style={{ opacity: 0.9 }}
     />
   );
 }

@@ -36,11 +36,11 @@ export default function BrandValues() {
     <section
       id="values"
       ref={sectionRef}
-      className="py-32 md:py-48 bg-cream-50 relative z-10"
+      className="py-32 md:py-48 bg-cream-100 relative z-10"
     >
       <div className="section-padding">
         <div className="text-center mb-20">
-          <span className="fade-in-section heading-sans text-[11px] text-gold-600 block mb-6">
+          <span className="fade-in-section heading-sans text-[11px] text-gold-500 block mb-6">
             {t('values.label')}
           </span>
           <h2 className="fade-in-section heading-display text-3xl md:text-5xl text-warm-800 mb-6">

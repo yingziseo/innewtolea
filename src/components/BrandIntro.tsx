@@ -30,7 +30,7 @@ export default function BrandIntro() {
       className="py-32 md:py-48 section-padding relative z-10 bg-white"
     >
       <div className="max-w-3xl mx-auto text-center">
-        <span className="fade-in-section heading-sans text-[11px] text-gold-600 block mb-6">
+        <span className="fade-in-section heading-sans text-[11px] text-gold-500 block mb-6">
           {t('about.label')}
         </span>
 

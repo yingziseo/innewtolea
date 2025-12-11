@@ -4,9 +4,8 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="py-24 md:py-32 section-padding relative z-10 overflow-hidden bg-gold-800">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center_top,_var(--tw-gradient-stops))] from-gold-600/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blush-600/10 via-transparent to-transparent" />
+    <footer className="py-24 md:py-32 section-padding relative z-10 overflow-hidden bg-warm-800">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center_top,_var(--tw-gradient-stops))] from-gold-600/10 via-transparent to-transparent" />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-8">
@@ -28,51 +27,51 @@ export default function Footer() {
               <line x1="24" y1="14" x2="24" y2="34" stroke="url(#footerLogoGradient)" strokeWidth="1" opacity="0.6" />
               <defs>
                 <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#C5A3CB" />
-                  <stop offset="100%" stopColor="#A97DB0" />
+                  <stop offset="0%" stopColor="#D2D2D7" />
+                  <stop offset="100%" stopColor="#AEAEB2" />
                 </linearGradient>
               </defs>
             </svg>
           </div>
         </div>
 
-        <p className="heading-sans text-xs text-gold-300 tracking-ultra mb-2">
+        <p className="heading-sans text-xs text-cream-300 tracking-ultra mb-2">
           INNEWTOLEA
         </p>
-        <p className="text-xs tracking-widest mb-12 text-gold-400/60">
+        <p className="text-xs tracking-widest mb-12 text-cream-400">
           {t('brand.name')}
         </p>
 
-        <div className="w-16 h-[1px] mx-auto mb-12 bg-gradient-to-r from-transparent via-gold-400/40 to-transparent" />
+        <div className="w-16 h-[1px] mx-auto mb-12 bg-gradient-to-r from-transparent via-cream-500/40 to-transparent" />
 
-        <p className="font-serif text-base mb-10 leading-relaxed text-gold-100/90">
+        <p className="font-serif text-base mb-10 leading-relaxed text-cream-200">
           {t('footer.wish')}
         </p>
 
         <div className="flex items-center justify-center gap-8 mb-16">
           <a
             href="#"
-            className="text-[10px] tracking-widest uppercase font-medium transition-colors duration-300 text-gold-300/70 hover:text-gold-200"
+            className="text-[10px] tracking-widest uppercase font-medium transition-colors duration-300 text-cream-400 hover:text-white"
           >
             Instagram
           </a>
-          <span className="text-gold-500/40">|</span>
+          <span className="text-cream-500/40">|</span>
           <a
             href="#"
-            className="text-[10px] tracking-widest uppercase font-medium transition-colors duration-300 text-gold-300/70 hover:text-gold-200"
+            className="text-[10px] tracking-widest uppercase font-medium transition-colors duration-300 text-cream-400 hover:text-white"
           >
             WeChat
           </a>
-          <span className="text-gold-500/40">|</span>
+          <span className="text-cream-500/40">|</span>
           <a
             href="#"
-            className="text-[10px] tracking-widest uppercase font-medium transition-colors duration-300 text-gold-300/70 hover:text-gold-200"
+            className="text-[10px] tracking-widest uppercase font-medium transition-colors duration-300 text-cream-400 hover:text-white"
           >
             Contact
           </a>
         </div>
 
-        <p className="text-[10px] tracking-wide text-gold-400/50">
+        <p className="text-[10px] tracking-wide text-cream-500">
           &copy; {new Date().getFullYear()} INNEWTOLEA. All rights reserved.
         </p>
       </div>

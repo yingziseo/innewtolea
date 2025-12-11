@@ -80,7 +80,7 @@ export default function FlowerCursor() {
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ filter: 'drop-shadow(0 2px 4px rgba(139, 90, 148, 0.3))' }}
+        style={{ filter: 'drop-shadow(0 2px 6px rgba(139, 90, 155, 0.25))' }}
       >
         {/* 外圈 */}
         <circle
@@ -109,8 +109,8 @@ export default function FlowerCursor() {
         <circle cx="24" cy="24" r="3" fill="#fff" opacity="0.9" />
         <defs>
           <linearGradient id="cursorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#8B5A94" />
-            <stop offset="100%" stopColor="#724578" />
+            <stop offset="0%" stopColor="#8B5A9B" />
+            <stop offset="100%" stopColor="#6E4580" />
           </linearGradient>
         </defs>
       </svg>

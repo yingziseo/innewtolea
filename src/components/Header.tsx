@@ -84,8 +84,8 @@ export default function Header() {
               <line x1="24" y1="14" x2="24" y2="34" stroke="url(#logoGradient)" strokeWidth="1" opacity="0.6" />
               <defs>
                 <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#8B5A94" />
-                  <stop offset="100%" stopColor="#724578" />
+                  <stop offset="0%" stopColor="#8B5A9B" />
+                  <stop offset="100%" stopColor="#6E4580" />
                 </linearGradient>
               </defs>
             </svg>
