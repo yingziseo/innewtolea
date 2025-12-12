@@ -16,10 +16,10 @@ export default function ProductRitual() {
   ];
 
   const otherIngredients = [
-    { nameKey: 'other.saffron', descKey: 'other.saffron.desc' },
-    { nameKey: 'other.carob', descKey: 'other.carob.desc' },
-    { nameKey: 'other.pomegranate', descKey: 'other.pomegranate.desc' },
-    { nameKey: 'other.rose', descKey: 'other.rose.desc' },
+    { nameKey: 'other.saffron', subtitleKey: 'other.saffron.subtitle', descKey: 'other.saffron.desc' },
+    { nameKey: 'other.carob', subtitleKey: 'other.carob.subtitle', descKey: 'other.carob.desc' },
+    { nameKey: 'other.pomegranate', subtitleKey: 'other.pomegranate.subtitle', descKey: 'other.pomegranate.desc' },
+    { nameKey: 'other.rose', subtitleKey: 'other.rose.subtitle', descKey: 'other.rose.desc' },
   ];
 
   useEffect(() => {
@@ -225,9 +225,12 @@ export default function ProductRitual() {
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-6">
-                  <h5 className="md:w-40 flex-shrink-0 heading-display text-base md:text-lg text-warm-800 group-hover:text-gold-700 transition-colors duration-500">
-                    {t(item.nameKey)}
-                  </h5>
+                  <div className="md:w-40 flex-shrink-0">
+                    <h5 className="heading-display text-base md:text-lg text-warm-800 group-hover:text-gold-700 transition-colors duration-500">
+                      {t(item.nameKey)}
+                    </h5>
+                    <p className="text-xs text-warm-400 mt-1">{t(item.subtitleKey)}</p>
+                  </div>
                   <p className="body-text text-sm text-warm-600 leading-relaxed flex-1">
                     {t(item.descKey)}
                   </p>

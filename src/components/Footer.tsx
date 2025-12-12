@@ -4,8 +4,23 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="py-24 md:py-32 section-padding relative z-10 overflow-hidden bg-warm-800">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center_top,_var(--tw-gradient-stops))] from-gold-600/10 via-transparent to-transparent" />
+    <footer className="py-24 md:py-32 section-padding relative z-10 overflow-hidden">
+      {/* SVG 背景 */}
+      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="footerBgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#2D1F3D" />
+            <stop offset="100%" stopColor="#0D0A12" />
+          </linearGradient>
+          <radialGradient id="footerGlow" cx="50%" cy="0%" r="60%" fx="50%" fy="0%">
+            <stop offset="0%" stopColor="#6B4C7A" stopOpacity="0.35" />
+            <stop offset="40%" stopColor="#4A3558" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#2D1F3D" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#footerBgGradient)" />
+        <rect width="100%" height="100%" fill="url(#footerGlow)" />
+      </svg>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-8">
