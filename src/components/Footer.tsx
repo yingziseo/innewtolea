@@ -44,9 +44,14 @@ export default function Footer() {
 
         <div className="w-16 h-[1px] mx-auto mb-12 bg-gradient-to-r from-transparent via-cream-500/40 to-transparent" />
 
-        <p className="font-serif text-base mb-10 leading-relaxed text-cream-200">
-          {t('footer.wish')}
-        </p>
+        <div className="mb-10 text-center">
+          <p className="font-serif text-lg mb-2 text-cream-200">
+            {t('footer.wish')}
+          </p>
+          <p className="font-sans text-xs tracking-wide text-cream-400">
+            {t('footer.wish.en')}
+          </p>
+        </div>
 
         <div className="flex items-center justify-center gap-8 mb-16">
           <a

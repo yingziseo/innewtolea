@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function ProductRitual() {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
+  const [currentImage, setCurrentImage] = useState(0);
+  const totalImages = 3;
 
   const coreIngredients = [
     { nameKey: 'core.pqq', descKey: 'core.pqq.desc' },
@@ -42,9 +44,13 @@ export default function ProductRitual() {
     <section
       id="products"
       ref={sectionRef}
-      className="py-32 md:py-48 relative z-10"
+      className="py-32 md:py-48 relative z-10 overflow-hidden"
     >
-      <div className="section-padding">
+      {/* 背景装饰 */}
+      <div className="absolute top-20 left-1/4 w-[400px] h-[400px] bg-gold-200/20 rounded-full blur-[100px] animate-float" />
+      <div className="absolute bottom-40 right-1/4 w-[350px] h-[350px] bg-blush-200/15 rounded-full blur-[100px] animate-float-delayed" />
+
+      <div className="section-padding relative z-10">
         <div className="text-center mb-16">
           <span className="fade-in-section heading-sans text-[11px] text-gold-500 block mb-6">
             {t('ritual.label')}
@@ -55,8 +61,9 @@ export default function ProductRitual() {
           <div className="fade-in-section divider mt-8" />
         </div>
 
-        {/* 产品信息区 */}
-        <div className="fade-in-section max-w-4xl mx-auto mb-12 text-center">
+        {/* 首屏：产品身份（唯一焦点） */}
+        <div className="fade-in-section max-w-4xl mx-auto mb-8 text-center">
+          {/* Logo花 */}
           <div className="w-24 h-24 mx-auto mb-6 relative group">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold-200/40 via-cream-100 to-blush-100/30 animate-pulse-slow" />
             <div className="absolute inset-1 rounded-full bg-gradient-to-br from-cream-50 to-white flex items-center justify-center">
@@ -89,39 +96,86 @@ export default function ProductRitual() {
             <div className="absolute inset-0 rounded-full border border-gold-300/40 animate-spin-very-slow" />
           </div>
 
-          <p className="heading-sans text-[10px] text-gold-400 tracking-ultra mb-2">
-            INNEWTOLEA
-          </p>
-          <h3 className="heading-display text-2xl md:text-3xl text-warm-800 mb-1">
+          <h3 className="heading-display text-2xl md:text-3xl text-warm-600 mb-2">
             {t('product.name')}
           </h3>
-          <p className="font-sans text-sm text-gold-500 mb-1">
+          <p className="font-sans text-sm text-[#8B5A94] mb-4">
             {t('product.name.sub')}
           </p>
-          <p className="heading-sans text-[10px] text-warm-400 mb-1">
-            {t('product.name.en')}
-          </p>
-          <p className="heading-sans text-[10px] text-warm-300 mb-4">
-            {t('product.spec')}
-          </p>
-          <p className="body-text text-sm max-w-sm mx-auto text-warm-500 leading-relaxed">
-            {t('product.desc')}
+          <p className="heading-sans text-[10px] text-gold-400/60 tracking-ultra">
+            INNEWTOLEA
           </p>
         </div>
 
-        {/* 产品图占位区域 */}
-        <div className="fade-in-section max-w-4xl mx-auto mb-16 flex justify-center">
-          <div className="w-56 h-72 rounded-2xl bg-gradient-to-br from-cream-100 to-cream-200 border border-cream-300 flex items-center justify-center overflow-hidden">
+        {/* 产品图 + 左右切换箭头 */}
+        <div className="fade-in-section max-w-4xl mx-auto mb-8 flex items-center justify-center gap-6 md:gap-10">
+          {/* 左箭头 */}
+          <button
+            onClick={() => setCurrentImage((prev) => (prev - 1 + totalImages) % totalImages)}
+            className="w-10 h-10 rounded-full border border-gold-300 flex items-center justify-center text-gold-400 hover:border-gold-500 hover:text-gold-600 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* 产品图 */}
+          <div className="w-64 h-80 md:w-72 md:h-[22rem] rounded-xl bg-gradient-to-br from-cream-100 to-cream-200 border border-cream-300 flex items-center justify-center overflow-hidden">
             <div className="text-center p-4">
-              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center">
-                <svg className="w-7 h-7 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gold-100 flex items-center justify-center">
+                <svg className="w-8 h-8 text-gold-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <p className="text-sm text-warm-500 font-medium">50ml</p>
-              <p className="text-[10px] text-warm-400 mt-1">Product Image</p>
+              <p className="text-[10px] text-warm-400 mt-1">Product Image {currentImage + 1}</p>
             </div>
           </div>
+
+          {/* 右箭头 */}
+          <button
+            onClick={() => setCurrentImage((prev) => (prev + 1) % totalImages)}
+            className="w-10 h-10 rounded-full border border-gold-300 flex items-center justify-center text-gold-400 hover:border-gold-500 hover:text-gold-600 transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* 图片指示器 */}
+        <div className="fade-in-section flex justify-center gap-2 mb-6">
+          {[0, 1, 2].map((index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImage(index)}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                currentImage === index ? 'bg-gold-500' : 'bg-gold-200'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* 价格 + 购买按钮 */}
+        <div className="fade-in-section max-w-4xl mx-auto mb-16 text-center">
+          <p className="heading-display text-xl md:text-2xl text-warm-800 mb-4">
+            {t('product.price')}
+          </p>
+          <button
+            disabled
+            className="px-8 py-3 rounded-full border border-gold-300 text-gold-500 text-sm tracking-wide cursor-not-allowed opacity-60 hover:border-[#8B5A94] hover:text-[#8B5A94] hover:bg-[#8B5A94]/10 transition-all duration-300"
+          >
+            {t('product.buy')}
+          </button>
+        </div>
+
+        {/* 第二屏：规格与情绪句 */}
+        <div className="fade-in-section max-w-4xl mx-auto mb-16 text-center">
+          <p className="heading-sans text-[10px] text-warm-400 tracking-wide mb-6">
+            {t('product.name.en')} · {t('product.spec')}
+          </p>
+          <p className="body-text text-base text-warm-600 leading-relaxed">
+            {t('product.desc')}
+          </p>
         </div>
 
         {/* 核心配料 */}

@@ -43,35 +43,21 @@ export default function WomenAppreciation() {
 
         <div className="fade-in-section divider mb-16" />
 
-        <div className="fade-in-section space-y-12 md:space-y-14">
-          <p className="heading-display text-xl md:text-2xl text-warm-700 leading-loose">
+        <div className="fade-in-section space-y-8 md:space-y-10">
+          <p className="body-text text-base md:text-lg max-w-2xl mx-auto text-warm-600 leading-relaxed">
             {t('women.p1')}
-            <br />
-            <span className="text-warm-800 font-medium">{t('women.p1.2')}</span>
           </p>
 
-          <p className="body-text text-base md:text-lg max-w-2xl mx-auto text-warm-600">
-            {t('women.p2.1')}
-            <br />
-            {t('women.p2.2')}
-            <br />
-            {t('women.p2.3')}
+          <p className="body-text text-base md:text-lg max-w-2xl mx-auto text-warm-600 leading-relaxed">
+            {t('women.p2')}
           </p>
 
-          <div className="py-6">
-            <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto" />
-          </div>
-
-          <p className="body-text text-base md:text-lg max-w-2xl mx-auto text-warm-600">
-            {t('women.p3.1')}
-            <br />
-            {t('women.p3.2')}
+          <p className="body-text text-base md:text-lg max-w-2xl mx-auto text-warm-600 leading-relaxed">
+            {t('women.p3')}
           </p>
 
-          <p className="heading-display text-xl md:text-2xl text-warm-700 leading-loose">
+          <p className="body-text text-base md:text-lg max-w-2xl mx-auto text-warm-600 leading-relaxed">
             {t('women.p4')}
-            <br />
-            {t('women.p4.2')}
           </p>
         </div>
 
