@@ -13,6 +13,7 @@ const homeAnchors = ['hero', 'brand-culture', 'values', 'products'];
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
@@ -100,6 +101,7 @@ export default function Header() {
           </div>
         </a>
 
+        {/* 桌面端导航 */}
         <div className="hidden md:flex items-center gap-12">
           {homeAnchors.map((anchor) => (
             <a
@@ -127,7 +129,76 @@ export default function Header() {
           </a>
         </div>
 
-        <div className="relative">
+        {/* 移动端：语言切换 + 汉堡菜单 */}
+        <div className="flex items-center gap-3 md:hidden">
+          {/* 语言切换 */}
+          <div className="relative">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLangMenuOpen(!langMenuOpen);
+              }}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full border border-warm-200 hover:border-gold-400 transition-all duration-300"
+            >
+              <span className="text-sm font-medium text-warm-700">
+                {currentLang?.short}
+              </span>
+              <svg
+                className={`w-3 h-3 text-warm-500 transition-transform duration-300 ${
+                  langMenuOpen ? 'rotate-180' : ''
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {langMenuOpen && (
+              <div className="absolute right-0 top-full mt-2 py-2 bg-white backdrop-blur-md rounded-xl shadow-premium-lg border border-cream-200 min-w-[120px] animate-fade-in z-50">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLanguage(lang.code);
+                      setLangMenuOpen(false);
+                    }}
+                    className={`w-full px-4 py-2.5 text-left text-sm transition-all duration-200 flex items-center justify-between ${
+                      language === lang.code
+                        ? 'text-gold-600 bg-gold-50'
+                        : 'text-warm-600 hover:text-warm-800 hover:bg-cream-50'
+                    }`}
+                  >
+                    <span>{lang.label}</span>
+                    {language === lang.code && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold-500" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 汉堡菜单按钮 */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-lg hover:bg-cream-100 transition-colors duration-300"
+            aria-label="Toggle menu"
+          >
+            <svg className="w-6 h-6 text-warm-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* 桌面端语言切换 */}
+        <div className="relative hidden md:block">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -176,6 +247,43 @@ export default function Header() {
           )}
         </div>
       </nav>
+
+      {/* 移动端展开菜单 */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white/98 backdrop-blur-md border-t border-cream-200 shadow-lg animate-fade-in">
+          <div className="section-padding py-4 flex flex-col gap-3">
+            {homeAnchors.map((anchor) => (
+              <a
+                key={anchor}
+                href={`#${anchor}`}
+                onClick={(e) => {
+                  handleNavClick(e, anchor);
+                  setMobileMenuOpen(false);
+                }}
+                className="py-2.5 text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300 text-center"
+              >
+                {t(anchor === 'hero' ? 'nav.home' :
+                   anchor === 'brand-culture' ? 'nav.brandCulture' :
+                   anchor === 'values' ? 'nav.values' : 'nav.products')}
+              </a>
+            ))}
+            <a
+              href="#/about"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300 text-center"
+            >
+              {t('nav.about')}
+            </a>
+            <a
+              href="#/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 text-sm tracking-wider text-warm-600 hover:text-gold-600 transition-colors duration-300 text-center"
+            >
+              {t('nav.contact')}
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
