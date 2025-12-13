@@ -179,7 +179,7 @@ export function ContactPage() {
             {/* Left: WeChat Card */}
             <div className="fade-in-section">
               <div className="h-full bg-gradient-to-br from-cream-50 to-white rounded-2xl p-8 md:p-10 border border-cream-200 hover:border-gold-300 hover:shadow-premium transition-all duration-500">
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex flex-col items-center gap-3 mb-8">
                   <div className="w-11 h-11 rounded-[10px] bg-gradient-to-br from-gold-200 to-gold-300 flex items-center justify-center shadow-[0_2px_8px_rgba(180,160,120,0.2),inset_0_1px_1px_rgba(255,255,255,0.3)]">
                     <svg className="w-5 h-5 text-gold-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
