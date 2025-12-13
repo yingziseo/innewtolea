@@ -142,8 +142,38 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Brand Introduction Section */}
+      <section className="py-24 md:py-32 section-padding bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="fade-in-section text-center mb-12">
+            <span className="heading-sans text-[11px] text-gold-600 block mb-4">
+              ABOUT US
+            </span>
+            <h2 className="heading-display text-3xl md:text-4xl text-warm-800 mb-6">
+              {t('aboutPage.brand.title')}
+            </h2>
+            <div className="divider mx-auto" />
+          </div>
+
+          <div className="fade-in-section space-y-6 text-center">
+            <p className="body-text text-warm-700 leading-relaxed text-lg">
+              {t('aboutPage.brand.intro')}
+            </p>
+            <p className="body-text text-warm-600 leading-relaxed">
+              {t('aboutPage.brand.formula')}
+            </p>
+            <p className="body-text text-warm-600 leading-relaxed">
+              {t('aboutPage.brand.production')}
+            </p>
+            <p className="body-text text-warm-600 leading-relaxed">
+              {t('aboutPage.brand.logistics')}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Back Button */}
-      <section className="py-16 section-padding bg-white">
+      <section className="py-16 section-padding bg-cream-50">
         <div className="text-center">
           <a
             href="#/"
