@@ -20,9 +20,9 @@ export default function Hero() {
           <p className="font-sans text-sm md:text-base text-warm-400 mb-10 tracking-widest font-light">
             {t('hero.subtitle')}
           </p>
-          <h1 className="font-display font-normal text-4xl md:text-5xl lg:text-6xl text-warm-800 leading-[1.3] tracking-wide">
-            <span className="block mb-2 bg-gradient-to-r from-warm-800 via-gold-500 to-warm-800 bg-clip-text text-transparent">{t('hero.title.1')}</span>
-            <span className="block text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-warm-800 via-gold-500 to-warm-800 bg-clip-text text-transparent">{t('hero.title.2')}</span>
+          <h1 className="font-display font-normal text-4xl md:text-5xl lg:text-6xl text-warm-800 leading-[1.4] tracking-wide">
+            <span className="block pb-2 bg-gradient-to-r from-warm-800 via-gold-500 to-warm-800 bg-clip-text text-transparent [-webkit-background-clip:text]">{t('hero.title.1')}</span>
+            <span className="block pb-2 text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-warm-800 via-gold-500 to-warm-800 bg-clip-text text-transparent [-webkit-background-clip:text]">{t('hero.title.2')}</span>
           </h1>
         </div>
 
