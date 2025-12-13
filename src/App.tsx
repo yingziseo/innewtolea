@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import SEO from './components/SEO';
 import DynamicBackground from './components/DynamicBackground';
-import FlowerCursor from './components/FlowerCursor';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import BrandIntro from './components/BrandIntro';
@@ -60,8 +59,7 @@ function App() {
   return (
     <LanguageProvider>
       <SEO />
-      <FlowerCursor />
-      <div className="min-h-screen bg-cream-50 relative">
+            <div className="min-h-screen bg-cream-50 relative">
         <DynamicBackground />
         <Header />
         <main>
